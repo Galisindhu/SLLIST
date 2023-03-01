@@ -1,0 +1,67 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+        int val;
+        struct node *next;
+    };
+ struct node *head;
+    struct node *temp;
+    struct node *newnode;
+void create(){
+   
+    head=NULL;
+    int choice;
+    printf("enter 0 or 1");
+    scanf("%d",&choice);
+    while(choice){
+        newnode=(struct node *)malloc(sizeof(struct node));
+        printf("enter the value");
+        scanf("%d",&newnode->val);
+        newnode->next=NULL;
+        if(head==NULL){
+            head=temp=newnode;
+        }
+        else{
+            temp->next=newnode;
+            temp=newnode;
+        }
+        printf("0 or 1");
+        scanf("%d",&choice);
+    }
+}
+void display(){
+    temp=head;
+    while(temp!=NULL){
+        printf("%d",temp->val);
+        temp=temp->next;
+    }
+}
+void peek(){
+    printf("the first ele is:%d",head->val);
+}
+void delete(){
+    struct node *temp;
+    temp=head;
+    head=head->next;
+    free(temp);
+}
+
+void main(){
+    int choice,x;
+    while(1){printf("\n1.create\n2.display\n3.delete\n4.peek\n5.exit\n");
+        printf("enter choice");
+        scanf("%d",&choice);
+        switch(choice){
+            case 1:create();
+            break;
+            case 2:display();
+            break;
+            case 3:delete();
+            break;
+            case 4:peek();
+            break;
+            case 5:exit(0);
+            break;
+        }
+    }
+}
